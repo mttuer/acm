@@ -1,0 +1,7 @@
+{
+    "SqlData":{
+        "usr":"name",
+        "pwd":"password"
+        "dbName":"databasename"
+    }
+}

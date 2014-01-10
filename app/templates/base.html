@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>{{title}} - Official Website</title>
+    </head>
+    <body>
+        <div>
+        <ul>
+            <li style = "display:inline;">{{title}} :::: </li>
+
+            {% for link in links %}
+            <li style = "display:inline;">
+            <a href="{{link.viewName}}">{{link.title}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        </div>
+
+        <hr>
+        {% block content %}{% endblock %}
+
+    </body>
+</html>
+
