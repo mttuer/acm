@@ -9,7 +9,7 @@
 
             {% for link in links %}
             <li style = "display:inline;">
-            <a href="{{link.viewName}}">{{link.title}}</a>
+            <a href="{{url_for(link.view)}}">{{link.title}}</a>
             </li>
             {% endfor %}
         </ul>
