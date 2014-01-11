@@ -18,9 +18,12 @@ for user in users:
     if len(db.fetchall()) > 0:
         print 'User ' + user["name"] + ' is already a user.'
     else:
+        print 'Inserting user ' + user['name']
         db.execute("INSERT INTO tbUsers (username,email,lastLogin,privledge) VALUES ('" + user["name"] + "','" + user["email"] + "', CURDATE()," + user["priv"] + ")")
        
 for post in posts:
+    print "Inserting post: " + post["body"]
     db.execute("INSERT INTO tbPosts (body,date,private) VALUES ('" + post["body"] + "',CURDATE()," + post["ready"] + ")")
     
+connect.commit()
 connect.close()

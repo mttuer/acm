@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Users</h1>
+    <div>
+        <table>
+            <tr>
+                {% for item in usersKeys %}
+                <th>{{item}}</th>
+                {% endfor %}
+            </tr>
+            {% for user in users %}
+            <tr>
+                {% for key in usersKeys %}
+                <td>{{user[loop.index0]}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <h1>Posts</h1>
+    <div>
+        <table>
+            <tr>
+                {% for item in postsKeys %}
+                <th>{{item}}</th>
+                {% endfor %}
+            </tr>
+            {% for post in posts %}
+            <tr>
+                {% for key in postsKeys %}
+                <td>{{post[loop.index0]}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
