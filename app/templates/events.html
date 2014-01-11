@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Events</h1>
+<ul>
+    {% set rows = tbl['rows'] %}
+    {% set keys = tbl['keys'] %}
+    {% for event in rows %}
+    <li>
+        <div style="float:left; width=80%">
+        <h2>{{ event[kToI['title']]}}</h2>
+        <ul>
+            {% for key in keys %}
+            <li style = "display:inline;">{{event[kToI[key]]}}</li>
+            {% endfor %}
+        </ul>
+        </div>
+        <div style="float:right;">
+            <li style = "display:inline;margin-left:50px">
+            <img src='static/eventLogos/{{event[kToI['logoName']]}}'>
+            </li>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
