@@ -21,16 +21,19 @@ def index():
 @app.route('/admin')
 def admin():
     db = connect.getDB()
-
-    db.execute("SELECT * FROM tbUsers;")
-    users = copy.deepcopy(db.fetchall())
-    uKeys = connect.getColNames("tbUsers")
-
-    db.execute("SELECT * FROM tbPosts;")
-    posts = copy.deepcopy(db.fetchall())
-    pKeys = connect.getColNames("tbPosts")
-
-    connect.close()
+    tables = ["tbUsers","tbPosts","tbEvents"]
+    tblSets = list()
+    for tbl in tables:
+        keys = connect.getColNames(tbl)
+        s = str()
+        for k in keys:
+            s += k + ","
+        s="SELECT " + s[:-1] + " FROM " + tbl
+        print s
+        db.execute(s)
+        tblSets.append({'tbName':tbl,
+            'keys':keys,
+            'rows':copy.deepcopy(db.fetchall())})
 
     links = [
             {'title': 'Home', 'view': "home"},
@@ -44,11 +47,6 @@ def admin():
             title = 'ACM@MichiganTech', 
             links = links, 
             user = user,
-            users=users,
-            usersKeys=uKeys,
-            posts=posts,
-            postsKeys=pKeys,
+            tables=tblSets
             )
 
-
-    
