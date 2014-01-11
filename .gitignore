@@ -1,2 +1,5 @@
 flask
 *.pyc
+app/config.json
+.DS_Store
+*.swp

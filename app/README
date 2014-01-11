@@ -1,0 +1,19 @@
+Setup Instructions
+
+# Environment setup
+python virtualenv.py
+flask/bin/pip install flask
+flask/bin/easy_install mysql-connector-python 
+# maybe?
+flask/bin/pip install mysql-connector-python
+
+# Database setup
+1. Create a MySQL database for the ACM website
+2. Create a file called config.json following the example config.json.example with your account information for MySQL
+3. Run the following
+python app/tblDefs.py
+python app/seed.py 
+
+# run on localhost:5000
+./run.py
+
