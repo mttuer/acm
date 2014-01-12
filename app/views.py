@@ -1,5 +1,6 @@
-from flask import render_template
+from flask import render_template, flash, redirect
 from app import app
+from forms import *
 import connect
 import copy
 
@@ -59,7 +60,7 @@ def admin():
             'rows':copy.deepcopy(db.fetchall())})
 
     links = [
-            {'title': 'Home', 'view': "index"},
+            {'title': 'Home', 'view': "index"}
             ]
 
     user = {'nickname': 'Miguel'}
@@ -70,6 +71,31 @@ def admin():
             user = user,
             tables=tblSets
             )
+
+@app.route('/newuser', methods = ['GET', 'POST'])
+def login():
+     links = [
+            {'title': 'Home', 'view': "index"}
+            ]
+
+     user = {'nickname': 'Miguel'}
+
+
+     form = NewUserForm()
+     if form.validate_on_submit():
+         flash("New user created")
+         db = connect.getDB()
+         values = list()
+         values.append(form.username.data)
+         values.append(form.email.data)
+         db.execute("INSERT INTO tbUsers (username, email, privledge) VALUES (%s,%s,0);", values)
+         connect.commit()
+         connect.close()
+     return render_template('newuser.html', 
+        title = 'ACM@MichiganTech',
+        links = links, 
+        user = user,
+        form = form)
 
 def getRowsForKeys(tbl, keys, db):
     s = str()
