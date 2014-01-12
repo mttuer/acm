@@ -3,6 +3,7 @@ Setup Instructions
 # Environment setup
 python virtualenv.py
 flask/bin/pip install flask
+flask/bin/pip install flask-wtf==0.8.4
 flask/bin/easy_install mysql-connector-python 
 # maybe?
 flask/bin/pip install mysql-connector-python

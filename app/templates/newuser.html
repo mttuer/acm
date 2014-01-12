@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Create New User</h1>
+<form action="" method="post" name="login">
+    {% for field in form %}
+    <tr>
+    {% if field.type == "BooleanField" %}
+        <td></td>
+        <td>{{ field }} {{ field.label }}</td>
+    {% else %}
+        <td>{{ field.label }}</td>
+        <td>{{ field }}</td>
+    {% endif %}
+    </tr>
+    {% endfor %}
+    <p><input type="submit" value="Sign In"></p>
+</form>
+{% endblock %}
