@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Create New User</h1>
-<form action="" method="post" name="login">
+<h1>Create New Event</h1>
+<form action="" method="post" name="event">
     {% for field in form %}
     <tr>
     {% if field.type == "BooleanField" %}
         <td></td>
         <td>{{ field }} {{ field.label }}</td>
+    {% elif field.type == "RadioField"%}
+        <table>
+            <tr><td>{{field.label}}</td></tr>
+        {% for subfield in field %}
+        <tr>
+            <td>{{ subfield }}</td>
+            <td>{{ subfield.label }}</td>
+        </tr>
+        {% endfor %} 
+        </table>
     {% else %}
         <td>{{ field.label }}</td>
         <td>{{ field }}</td>

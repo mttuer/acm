@@ -1,4 +1,5 @@
 import connect
+
 tables = {
         'tbUsers': [
         {'username':'Mike','email':'a@a','privledge':'1'}, 

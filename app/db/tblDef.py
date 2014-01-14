@@ -1,4 +1,4 @@
-import connect
+from connect import *
 
 tbUsers="""CREATE TABLE IF NOT EXISTS tbUsers (
     id          INT NOT NULL AUTO_INCREMENT,
@@ -28,6 +28,7 @@ tbEvents="""CREATE TABLE IF NOT EXISTS tbEvents (
     category    INT,
     entrance    INT,
     logoName    VARCHAR(64),
+    active      BOOL,
     PRIMARY KEY (id)
     );"""
 
@@ -41,23 +42,22 @@ tbSponsors = """CREATE TABLE IF NOT EXISTS tbSponsors (
     pocLastName     VARCHAR(64),
     PRIMARY KEY (id)
     );"""
+
  
 tbEventSpons= """CREATE TABLE IF NOT EXISTS tbEventSpons(
     id          INT NOT NULL AUTO_INCREMENT,
     eventID     INT,
-    eventNum    INT,
+    sponsID     INT,
     dateRec     DATE,
     amount      DECIMAL(8,2),
-    FOREIGN KEY (eventID) REFERENCES tbSponsors(id),
+    FOREIGN KEY (eventID) REFERENCES tbEvents(id),
+    FOREIGN KEY (sponsID) REFERENCES tbSponsors(id),
     PRIMARY KEY (id)
     );"""
 
-db = connect.getDB()
 
-db.execute(tbUsers)
-db.execute(tbPosts)
-db.execute(tbEvents)
-db.execute(tbSponsors)
-db.execute(tbEventSpons)
-
-db.close()
+execute(tbUsers)
+execute(tbPosts)
+execute(tbEvents)
+execute(tbSponsors)
+execute(tbEventSpons)

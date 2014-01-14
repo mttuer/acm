@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Add a Sponsorship</h1>
+<form action="" method="post" name="sponsorship">
+    {% for field in form %}
+    <tr>
+    {% if field.type == "BooleanField" %}
+        <td></td>
+        <td>{{ field }} {{ field.label }}</td>
+    {% else %}
+        <td>{{ field.label }}</td>
+        <td>{{ field }}</td>
+    {% endif %}
+    </tr>
+    {% endfor %}
+    <p><input type="submit" value="Add"></p>
+</form>
+{% for tbl in tables %}
+
+<h1>{{ tbl['tbName'] }}</h1>
+<table border = 1>
+    <tr>
+        {% for key in tbl['keys'] %}
+        <th>{{ key }}</th>
+        {% endfor %}
+    </tr>
+    {% for row in tbl['rows'] %}
+    <tr>
+        {% for key in tbl['keys'] %}
+        <td>{{ row[loop.index0] }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endfor %}
+
+
+{% endblock %}
