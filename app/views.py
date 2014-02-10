@@ -4,18 +4,19 @@ import connect
 import copy
 
 @app.route('/')
-@app.route('/index')
+@app.route('/home')
 def index():
     links = [
             {'title': 'Home', 'view': "home"},
-            {'title': 'links', 'view': "home"},
-            {'title': 'Interviews', 'view': "home"},
+            {'title': 'Links', 'view': "links"},
+            {'title': 'Interviews', 'view': "interviews"},
             ]
     user = {'nickname': 'Miguel'}
     return render_template("index.html", 
             title = 'ACM@MichiganTech', 
             links = links, 
-            user = user
+            user = user,
+            active = "home"
             )
 
 @app.route('/admin')

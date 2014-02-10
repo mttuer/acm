@@ -1,4 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Hello, {{user.nickname}}!</h1>
+<div class="jumbotron">
+    <ul class="bxslider">
+        <li>
+        <h1>Giving "hacking" a new meaning</h1>
+        <blockquote>
+            <p>Hacking is just working on a single project for an extended period of time and just trying to get it done.</p>
+            <small>Michael Tuer</small>
+        </blockquote>
+        </li>
+
+        <li>
+        <h1>ACM@MichiganTech wants you!</h1>
+        <p>We're actively look for new members blahblah</p>
+        </li>
+    </ul>
+    <div class="slidecontrol">
+        <span id="slider-prev"></span>
+        <span id="slider-next"></span>
+    </div>
+</div>
 {% endblock %}

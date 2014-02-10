@@ -1,0 +1,37 @@
+.navbar-default {
+    height: 75px;
+}
+
+.navbar .container {
+    margin-top: 10px;
+}
+
+#mtulogo {
+    margin-top: 4px;
+}
+
+#acmlogo {
+    margin-top: -10px;
+}
+
+.bx-wrapper .bx-viewport{
+    -moz-box-shadow: 0;
+    -webkit-box-shadow: 0;
+    box-shadow: 0 0 0 0;
+    border: 0;
+    left: 0;
+    background: #E0E0E0;
+}
+
+#slider-next, #slider-prev {
+    position: absolute;
+    margin-top: -5%;
+}
+
+#slider-next {
+    right: 5%;
+}
+
+#slider-prev {
+    left: 5%;
+}
